@@ -3,7 +3,7 @@ import json
 import time
 
 # URL of the phyphox experiment
-url = "http://10.250.173.209/get?channels="  # Adjust this URL based on phyphox's API
+url = "http://10.250.173.209/get?"  # Adjust this URL based on phyphox's API
 what_to_get = ['magX', 'magY', 'magZ', 'mag']
 
 def get_phyphox_data():
@@ -21,9 +21,9 @@ def get_phyphox_data():
             # Assuming 'buffer' is a key in the response and it contains a list of values
             # Adjust this based on the actual structure of the response
             mag_data = data.get('buffer', {}).get(item, [])[0] if data.get('buffer', {}).get(item) else None
-            print(f'{mag_data:10.8}', end='\t')
+            print(f'{mag_data}', end='\t')
         print()
-    except requests.exceptions.RequestException as e:
+    except r.exceptions.RequestException as e:
         print(f"Request failed: {e}")
     except json.JSONDecodeError:
         print("Failed to decode JSON.")
@@ -35,3 +35,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
